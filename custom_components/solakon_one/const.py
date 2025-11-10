@@ -58,6 +58,10 @@ REGISTERS = {
     "reactive_power": {"address": 39136, "count": 2, "type": "i32", "scale": 1000, "unit": "kvar"},
     "power_factor": {"address": 39138, "count": 1, "type": "i16", "scale": 1000},
     "grid_frequency": {"address": 39139, "count": 1, "type": "i16", "scale": 100, "unit": "Hz"},
+
+    # EPS
+    "eps_power": {"address": 39216, "count": 2, "type": "i32", "scale": 1, "unit": "W"},
+    "eps_frequency": {"address": 39218, "count": 1, "type": "i16", "scale": 100, "unit": "Hz"},
     
     # Temperature
     "internal_temp": {"address": 39141, "count": 1, "type": "i16", "scale": 10, "unit": "°C"},
@@ -159,6 +163,13 @@ SENSOR_DEFINITIONS = {
         "state_class": "measurement",
         "unit": "%",
         "icon": "mdi:battery",
+    },
+    "eps_power": {
+        "name": "EPS Power",
+        "device_class": "power",
+        "state_class": "measurement",
+        "unit": "W",
+        "icon": "mdi:flash",
     },
     
     # Voltage sensors
@@ -276,6 +287,13 @@ SENSOR_DEFINITIONS = {
     },
     "grid_frequency": {
         "name": "Grid Frequency",
+        "device_class": "frequency",
+        "state_class": "measurement",
+        "unit": "Hz",
+        "icon": "mdi:sine-wave",
+    },
+    "eps_frequency": {
+        "name": "EPS Frequency",
         "device_class": "frequency",
         "state_class": "measurement",
         "unit": "Hz",
@@ -500,7 +518,7 @@ NUMBER_DEFINITIONS = {
         "mode": "slider",
     },
     "battery_max_charge_current": {
-        "name": "Maximmum Charge Current",
+        "name": "Maximum Charge Current",
         "icon": "mdi:battery-charging",
         "min": 0,
         "max": 40,
